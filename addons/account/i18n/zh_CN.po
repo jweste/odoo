@@ -9,28 +9,31 @@
 # Dong Wei <fatfox21@gmail.com>, 2015
 # fausthuang, 2015
 # fausthuang, 2015
+# Gang LIU <liu9ang@hotmail.com>, 2016
 # Gary Wei <Gary.wei@elico-corp.com>, 2015
 # Haorui Wang <yui12349856@live.com>, 2015
 # H_Tang <h_tang@foxmail.com>, 2015
-# jeffery chen fan <jeffery9@gmail.com>, 2015-2016
+# Jeffery Chenn <jeffery9@gmail.com>, 2015-2016
+# Jeffery Chenn <jeffery9@gmail.com>, 2016
 # Joray <13637815@qq.com>, 2016
 # Kai Zhu <parahexen@gmail.com>, 2016
 # Martin Trigaux, 2015
 # Rona Lin <ssauapw@qq.com>, 2015
 # waveyeung <waveyeung@qq.com>, 2015
+# Wei "oldrev" Li <liwei@sandwych.com>, 2016
 # zhangpeiqing <zpq001@live.com>, 2015
 # zhining wu <wzn63@21cn.com>, 2015
 # 卓忆科技 <zhanghao@jointd.com>, 2016
 # 榴莲 <nocoolyoyo@bengentea.top>, 2016
-# 珠海-老天 <liangjia@qq.com>, 2015
+# liAnGjiA <liangjia@qq.com>, 2015
 # 钟小华 <mackz@sina.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-17 14:09+0000\n"
-"PO-Revision-Date: 2016-03-19 10:26+0000\n"
-"Last-Translator: jeffery chen fan <jeffery9@gmail.com>\n"
+"PO-Revision-Date: 2016-04-30 03:37+0000\n"
+"Last-Translator: Jeffery Chenn <jeffery9@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/odoo/odoo-9/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,7 +97,7 @@ msgid ""
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr ""
+msgstr "\n<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n    <p>你好 ${object.partner_id.name},</p>\n    <p>你有一张新发票: </p>\n    \n    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n       &nbsp;&nbsp;<strong>有关信息</strong><br />\n       &nbsp;&nbsp;发票号: <strong>${object.number}</strong><br />\n       &nbsp;&nbsp;发票金额: <strong>${object.amount_total} ${object.currency_id.name}</strong><br />\n       &nbsp;&nbsp;开票日期: ${object.date_invoice}<br />\n       % if object.origin:\n       &nbsp;&nbsp;订单: ${object.origin}<br />\n       % endif\n       % if object.user_id:\n       &nbsp;&nbsp;你的联系地址: <a href=\"mailto:${object.user_id.email or ''}?subject=Invoice%20${object.number}\">${object.user_id.name}</a>\n       % endif\n    </p>  \n    \n    % if object.paypal_url:\n    <br/>\n    <p>你可以直接使用Paypal支付:</p>\n        <a style=\"margin-left: 120px;\" href=\"${object.paypal_url}\">\n            <img class=\"oe_edi_paypal_button\" src=\"/account/static/src/img/btn_paynowcc_lg.gif\"/>\n        </a>\n    % endif\n    \n    <br/>\n    <p>如果有任何疑问，和我们直接联系.</p>\n    <p>感谢你选择${object.company_id.name or 'us'}!</p>\n    <br/>\n    <br/>\n    <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n            <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n    </div>\n    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n            ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n        </span>\n        % if object.company_id.phone:\n            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n                电话:&nbsp; ${object.company_id.phone}\n            </div>\n        % endif\n        % if object.company_id.website:\n            <div>\n                网址 :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n            </div>\n        %endif\n        <p></p>\n    </div>\n</div>\n            "
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_state
@@ -262,7 +265,7 @@ msgid ""
 "<span class=\"panel-title\">\n"
 "                                        <strong>Accountant</strong> (Advanced access)\n"
 "                                    </span>"
-msgstr "<span class=\"panel-title\">\n                                        <strong>财务</strong> (高级接入)\n                                    </span>"
+msgstr "<span class=\"panel-title\">\n                                        <strong>财务</strong> (高级访问)\n                                    </span>"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.account_planner
@@ -418,7 +421,7 @@ msgstr "<strong>资产管理</strong>"
 msgid ""
 "<strong>Automated documents sending:</strong> automatically send your "
 "invoices by email or snail mail."
-msgstr "<strong>文件自动发送:</strong> 自动将发票通过电子邮件发送"
+msgstr "<strong>文档自动发送:</strong> 自动将发票通过电子邮件发送"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.report_overdue_document
@@ -728,7 +731,7 @@ msgid ""
 "                payments on a daily basis. You can enter the coins that are in\n"
 "                your cash box, and then post entries when money comes in or\n"
 "                goes out of the cash box."
-msgstr "现金登记按钮允许你在现金分类账中管理你的现金分录\n这个特征让你用一种简单的方式操作每天的业务，你可以输入钱箱中的硬币数额，\n然后当从钱箱中拿出或者放入金额的时候对分录进行过账"
+msgstr "现金出纳机按钮允许你在现金分类账中管理你的现金分录\n这个功能让你用一种简单的方式操作每天的业务，你可以输入钱箱中的硬币数额，\n然后当从钱箱中拿出或者放入金额的时候对分录进行过账"
 
 #. module: account
 #: code:addons/account/models/account_invoice.py:1206
@@ -980,7 +983,7 @@ msgstr "会计报告层级"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_fiscal_position_account_template_account_src_id
 msgid "Account Source"
-msgstr "源科目"
+msgstr "科目来源"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.account_bank_statement_graph
@@ -1081,7 +1084,7 @@ msgstr "会计分录行调节(销账)"
 #. module: account
 #: model:ir.model,name:account.model_account_move_reversal
 msgid "Account move reversal"
-msgstr "逆转科目"
+msgstr "会计逆转分录"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_fiscal_position_account_account_src_id
@@ -1113,7 +1116,7 @@ msgstr "科目被用来设置在发票的税行上用来开票，留空去用费
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_fiscal_position_account_account_dest_id
 msgid "Account to Use Instead"
-msgstr "用来代替的科目"
+msgstr "替代使用的科目"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_accounts_wizard_account_type
@@ -1136,7 +1139,7 @@ msgstr "会计"
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_account_config_settings
 msgid "Accounting & Finance"
-msgstr "会计 & 财务"
+msgstr "会计 及 财务"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_wizard_multi_chart
@@ -1167,7 +1170,7 @@ msgstr "会计单据"
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_partner_property_form
 msgid "Accounting Entries"
-msgstr "分类账分录"
+msgstr "会计分录"
 
 #. module: account
 #: model:ir.model,name:account.model_accounting_report
@@ -1200,7 +1203,7 @@ msgstr "允许的科目"
 #. module: account
 #: model:ir.model,name:account.model_account_fiscal_position_account
 msgid "Accounts Fiscal Position"
-msgstr "科目财政位置"
+msgstr "会计财政位置"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_account_position_template_form
@@ -1419,7 +1422,7 @@ msgstr "允许调节"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_config_settings_module_account_tax_cash_basis
 msgid "Allow Tax Cash Basis"
-msgstr "允许以现金为基础的税"
+msgstr "允许税金收付实现制"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_config_settings_module_l10n_us_check_printing
@@ -1582,7 +1585,7 @@ msgstr "分析账户"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_tax_template_analytic
 msgid "Analytic Cost"
-msgstr "辅助核算成本"
+msgstr "分析成本"
 
 #. module: account
 #: model:ir.ui.menu,name:account.menu_action_analytic_lines_tree
@@ -1661,7 +1664,7 @@ msgid ""
 "Asset management: This allows you to manage the assets owned by a company or a person. It keeps track of the depreciation occurred on those assets, and creates account move for those depreciation lines.\n"
 "\n"
 "-This installs the module account_asset. If you do not check this box, you will be able to do invoicing & payments, but not accounting (Journal Items, Chart of Accounts, ...)"
-msgstr ""
+msgstr "资产管理：允许管理由公司或个人所拥有的资产。此模块将跟踪资产的折旧并为折旧明细产生会计凭证。\n\n- 本操作将会安装 account_asset 模块，如果未选中此框，将仅能进行开票和付款而不能进行专业的会计操作（日记账、科目表等）"
 
 #. module: account
 #: model:account.financial.report,name:account.account_financial_report_assets0
@@ -1756,7 +1759,7 @@ msgstr "余额，基于开账余额和交易计算"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line_balance_cash_basis
 msgid "Balance cash basis"
-msgstr "以现金为基础的余额"
+msgstr "现金收付制余额"
 
 #. module: account
 #: selection:account.bank.accounts.wizard,account_type:0
@@ -1991,7 +1994,7 @@ msgstr "按国家"
 #. module: account
 #: model:ir.filters,name:account.filter_invoice_product
 msgid "By Product"
-msgstr "By Product"
+msgstr "By 产品"
 
 #. module: account
 #: model:ir.filters,name:account.filter_invoice_product_category
@@ -2006,7 +2009,7 @@ msgstr "By 退款"
 #. module: account
 #: model:ir.filters,name:account.filter_invoice_salespersons
 msgid "By Salespersons"
-msgstr "按销售员"
+msgstr "By 销售员"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_fiscal_position_active
@@ -2080,7 +2083,7 @@ msgstr "取消选定的发票"
 #. module: account
 #: selection:account.invoice.refund,filter_refund:0
 msgid "Cancel: create refund and reconcile"
-msgstr "取消：创建退款和调节"
+msgstr "取消：创建退款并调节"
 
 #. module: account
 #: selection:account.invoice,state:0 selection:account.invoice.report,state:0
@@ -2911,7 +2914,7 @@ msgstr "贷方总额"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line_credit_cash_basis
 msgid "Credit cash basis"
-msgstr "以现金为贷方基础"
+msgstr "现金收付制贷方"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line_matched_credit_ids
@@ -3124,7 +3127,7 @@ msgstr "借方总额"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line_debit_cash_basis
 msgid "Debit cash basis"
-msgstr "借方现金"
+msgstr "现金收付制借方"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line_matched_debit_ids
@@ -4010,7 +4013,7 @@ msgstr "总账报告"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_config_settings_module_account_tax_cash_basis
 msgid "Generate tax cash basis entrie when reconciliating entries"
-msgstr "当反调节分录的时候生成以现金为基础的税的分录"
+msgstr "在反调节分录时生成现金收付制税金分录"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_config_settings_module_account_reports
@@ -4466,7 +4469,7 @@ msgstr "包含在分析成本中"
 #: model:ir.model.fields,field_description:account.field_account_tax_price_include
 #: model:ir.model.fields,field_description:account.field_account_tax_template_price_include
 msgid "Included in Price"
-msgstr "包含在片中"
+msgstr "包含在价格中"
 
 #. module: account
 #: model:account.account.type,name:account.data_account_type_revenue
@@ -6136,12 +6139,12 @@ msgstr "部分调节"
 #: model:ir.ui.view,arch_db:account.view_account_payment_search
 #, python-format
 msgid "Partner"
-msgstr "合作伙伴"
+msgstr "业务伙伴"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_report_commercial_partner_id
 msgid "Partner Company"
-msgstr "合作伙伴公司"
+msgstr "业务伙伴公司"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line_ref
@@ -6418,7 +6421,7 @@ msgstr "价格百分比"
 #: selection:account.tax,amount_type:0
 #: selection:account.tax.template,amount_type:0
 msgid "Percentage of Price Tax Included"
-msgstr "含税价的百分比"
+msgstr "价格百分比"
 
 #. module: account
 #: selection:account.operation.template,second_amount_type:0
@@ -6976,7 +6979,7 @@ msgstr "退款方式"
 msgid ""
 "Refund base on this type. You can not Modify and Cancel if the invoice is "
 "already reconciled"
-msgstr "这种方式运行，如果发票已核销，您不可以修改和删除。"
+msgstr "退款以这种方式运行，如果发票已核对，则您不可以修改和取消。"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_account_invoice_filter
@@ -7761,7 +7764,7 @@ msgstr "字段有借贷方，以便报表上的图标显示"
 msgid ""
 "Technical field holding the debit_cash_basis - credit_cash_basis in order to"
 " open meaningful graph views from reports"
-msgstr "字段基于借贷方现金，以便报表上的图标显示"
+msgstr "技术字段 debit_cash_basis - credit_cash_basis 用于从报告开启具有意味的图表视图"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_move_name
@@ -7786,7 +7789,7 @@ msgstr "用于可用性用途的技术领域"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_matched_percentage
 msgid "Technical field used in cash basis method"
-msgstr "字段将被用于现金基础方式"
+msgstr "技术字段用于现金收付制方法"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_abstract_payment_payment_method_code
@@ -9247,7 +9250,7 @@ msgstr "已经调节的分录不能更改。你只能更改一些非法律强制
 msgid ""
 "You cannot empty the account number once set.\n"
 "If you would like to delete the account number, you can do it from the Bank Accounts list."
-msgstr ""
+msgstr "账户号码一旦设置，您就不能清空。\n如果您想删除账户号码，您可在银行账户列表中进行。"
 
 #. module: account
 #: code:addons/account/models/account.py:96
